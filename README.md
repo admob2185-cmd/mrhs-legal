@@ -8,3 +8,4 @@ Privacy policies and terms of use for ZdravoSken, Nutrova and Dice of Fate and C
 
 Contact: prvyucetjedna@gmail.com
 - Cubeloom: cubeloom/privacy.html
+- Ave: ave/privacy.html, ave/terms.html, ave/delete-account.html
