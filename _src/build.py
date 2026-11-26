@@ -6,7 +6,7 @@ DEV, EMAIL = 'MR and HS Devs', 'prvyucetjedna@gmail.com'
 DATES = dict(date_en='26 November 2026', date_sk='26. novembra 2026', date_cs='26. listopadu 2026')
 APPS = {
   'zdravosken': dict(app='ZdravoSken', pkg='sk.zdravosken.app', langs=['sk', 'cs', 'en'], color='#1E9E4A', color2='#0E7A3C'),
-  'nutrilens': dict(app='NutriLens', pkg='app.nutrilens.scanner', langs=['en', 'sk'], color='#0E7C86', color2='#0A3F5E'),
+  'nutrova': dict(app='Nutrova', pkg='app.nutrova.scanner', langs=['en', 'sk'], color='#0E7C86', color2='#0A3F5E'),
 }
 LANG_NAMES = {'en': 'English', 'sk': 'Slovenčina', 'cs': 'Čeština'}
 CSS = """
@@ -51,5 +51,5 @@ open(f'{OUT}/index.html', 'w', encoding='utf-8').write(f"""<!doctype html><html 
 <main><section class="doc"><ul>{items}</ul><p>Contact: <a href="mailto:{EMAIL}">{EMAIL}</a></p></section></main></body></html>
 """)
 open(f'{OUT}/.nojekyll', 'w').write('')
-open(f'{OUT}/README.md', 'w').write(f'# {DEV} – legal pages\n\nPrivacy policies and terms of use for ZdravoSken and NutriLens, published with GitHub Pages.\n\n- ZdravoSken: zdravosken/privacy.html, zdravosken/terms.html\n- NutriLens: nutrilens/privacy.html, nutrilens/terms.html\n\nContact: {EMAIL}\n')
+open(f'{OUT}/README.md', 'w').write(f'# {DEV} – legal pages\n\nPrivacy policies and terms of use for ZdravoSken and Nutrova, published with GitHub Pages.\n\n- ZdravoSken: zdravosken/privacy.html, zdravosken/terms.html\n- Nutrova: nutrova/privacy.html, nutrova/terms.html\n\nContact: {EMAIL}\n')
 print('ok')
