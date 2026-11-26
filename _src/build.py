@@ -1,12 +1,15 @@
 # -*- coding: utf-8 -*-
 import os, html
 from content import PRIVACY, TERMS
+import content_dice
 OUT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DEV, EMAIL = 'MR and HS Devs', 'prvyucetjedna@gmail.com'
 DATES = dict(date_en='26 November 2026', date_sk='26. novembra 2026', date_cs='26. listopadu 2026')
 APPS = {
   'zdravosken': dict(app='ZdravoSken', pkg='sk.zdravosken.app', langs=['sk', 'cs', 'en'], color='#1E9E4A', color2='#0E7A3C'),
   'nutrova': dict(app='Nutrova', pkg='app.nutrova.scanner', langs=['en', 'sk'], color='#5B3FD6', color2='#25165F'),
+  'dice-of-fate': dict(app='Dice of Fate', pkg='com.mrandhsdevs.diceoffate', langs=['en', 'sk'], terms_langs=['en'], color='#8A3FD6', color2='#2A1150',
+                       privacy=content_dice.PRIVACY, terms=content_dice.TERMS),
 }
 LANG_NAMES = {'en': 'English', 'sk': 'Slovenčina', 'cs': 'Čeština'}
 CSS = """
@@ -22,7 +25,8 @@ footer{color:var(--m);font-size:14px;text-align:center;padding:10px 20px 40px}
 @media (prefers-color-scheme:dark){:root{--t:#e6ece9;--m:#a3b0aa;--b:#26302b;--bg:#0e1311}section.doc{background:#171e1a}code{background:#212a25}a,section.doc>h2{color:#7fd6a0}}
 """
 def page(app_key, kind):
-    a = APPS[app_key]; data = PRIVACY if kind == 'privacy' else TERMS
+    a = APPS[app_key]; data = a.get(kind, PRIVACY if kind == 'privacy' else TERMS)
+    if kind == 'terms' and a.get('terms_langs'): a = dict(a, langs=a['terms_langs'])
     fill = dict(app=a['app'], pkg=a['pkg'], dev=DEV, email=EMAIL, **DATES)
     f = lambda s: s.format(**fill)
     title0 = f(data[a['langs'][0]]['title'])
@@ -51,5 +55,5 @@ open(f'{OUT}/index.html', 'w', encoding='utf-8').write(f"""<!doctype html><html 
 <main><section class="doc"><ul>{items}</ul><p>Contact: <a href="mailto:{EMAIL}">{EMAIL}</a></p></section></main></body></html>
 """)
 open(f'{OUT}/.nojekyll', 'w').write('')
-open(f'{OUT}/README.md', 'w').write(f'# {DEV} – legal pages\n\nPrivacy policies and terms of use for ZdravoSken and Nutrova, published with GitHub Pages.\n\n- ZdravoSken: zdravosken/privacy.html, zdravosken/terms.html\n- Nutrova: nutrova/privacy.html, nutrova/terms.html\n\nContact: {EMAIL}\n')
+open(f'{OUT}/README.md', 'w').write(f'# {DEV} – legal pages\n\nPrivacy policies and terms of use for ZdravoSken, Nutrova and Dice of Fate, published with GitHub Pages.\n\n- ZdravoSken: zdravosken/privacy.html, zdravosken/terms.html\n- Nutrova: nutrova/privacy.html, nutrova/terms.html\n- Dice of Fate: dice-of-fate/privacy.html, dice-of-fate/terms.html\n\nContact: {EMAIL}\n')
 print('ok')
