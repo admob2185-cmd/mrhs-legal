@@ -6,7 +6,7 @@ DEV, EMAIL = 'MR and HS Devs', 'prvyucetjedna@gmail.com'
 DATES = dict(date_en='26 November 2026', date_sk='26. novembra 2026', date_cs='26. listopadu 2026')
 APPS = {
   'zdravosken': dict(app='ZdravoSken', pkg='sk.zdravosken.app', langs=['sk', 'cs', 'en'], color='#1E9E4A', color2='#0E7A3C'),
-  'nutrova': dict(app='Nutrova', pkg='app.nutrova.scanner', langs=['en', 'sk'], color='#0E7C86', color2='#0A3F5E'),
+  'nutrova': dict(app='Nutrova', pkg='app.nutrova.scanner', langs=['en', 'sk'], color='#5B3FD6', color2='#25165F'),
 }
 LANG_NAMES = {'en': 'English', 'sk': 'Slovenčina', 'cs': 'Čeština'}
 CSS = """
